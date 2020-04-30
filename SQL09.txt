@@ -1,0 +1,63 @@
+信息系统与数据库技术练习8答题卡
+
+班级：     信息管理一班
+姓名：     余晓伟
+学号：     20190307109
+
+注：请将答案放置在序号下方。*/
+
+（一）
+1、/*打开EDUC数据库。*/
+USE EDUC
+2、/*查询Course表中所有课程名(Cname)未确定的全部字段。*/
+SELECT *
+FROM Course
+WHERE Cname IS NULL
+3、/*在SC表中查询成绩(SCscore)不及格或成绩(SCscore)不小于80分的全部字段。*/
+SELECT *
+FROM SC
+WHERE SCscore<60 OR SCscore!<80
+4、/*在sc表中查询课程号(Cid)为A00401，且成绩(SCscore)大于等于80分的全部字段。*/
+SELECT *
+FROM SC
+WHERE Cid=A00401 AND SCscore<=80
+5、/*在Student表中查询年龄(根据参加出生日期Birth计算年龄)为26岁以下(含26岁)且性别(Sex)为女的全部字段。*/
+SELECT *
+FROM Student
+WHERE DATEDIFF(YY,Birth,GETDATE())<=26 AND Sex='女'
+6、/*在SC表中查询成绩(SCscore)介于80分至90分之间的学号(Sid)、课程号(Cid)、成绩(SCscore)。*/
+SELECT  Sid,Cid,SCscore
+FROM SC
+WHERE SCscore BETWEEN 80 AND 90
+7、/*在Course表中查询课程号(Cid)为A00101或A00201或B00101的全部字段。*/
+SELECT * 
+FROM Course
+WHERE Cid IN ('A00101','A00201','B00101')
+8、/*在Course表中查询课程号(Cid)不是A00101、A00201、B00101的全部字段。提示：用NOT IN，其它与上题相同。*/
+SELECT * 
+FROM Course
+WHERE Cid NOT IN ('A00101','A00201','B00101')
+9、/*在Student表中查询姓名(Sname)包含林的全部字段。*/
+SELECT * 
+FROM Student
+WHERE Telephone LIKE '%林%'
+10、/*在Student表中查询姓名(Sname)第二个汉字为勇的全部字段。*/
+SELECT *
+FROM Student
+WHERE Eid LIKE '_勇%'
+11、/*在Course表中查询课程号(Cid)以A002-A004开头的课程号(Cid)和课程名(Cname)。*/
+SELECT  Cid，Cname
+FROM Course
+WHERE Cid LIKE 'A00[2-4]%'
+12、/*在Course表中查询课程名(Cname)第三个字符为英或数或机的全部字段。*/
+SELECT *
+FROM Course
+WHERE Ename LIKE '__[英数机]%'
+13、/*在Course表中查询课程名(Cname)不以大写字母且不以“大”开头的全部字段 。*/
+SELECT * 
+FROM Course
+WHERE Cname LIKE '[^大]%'
+14、/*在Course表中查询课程号(Cid)以A_开头的全部字段*/
+SELECT *
+FROM Course
+WHERE Cid LIKE 'A[_]%'
